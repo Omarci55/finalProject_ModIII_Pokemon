@@ -21,7 +21,7 @@ class Pokemon {
     }
 
     showStatus( ) {
-        console.log(`${this.name} has ${this.health} health and ${this.magic} magic level left.`)
+        //console.log(`${this.name} has ${this.health} health and ${this.magic} magic level left.`)
     }
 }
 
