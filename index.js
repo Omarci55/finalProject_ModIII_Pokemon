@@ -15,9 +15,15 @@ class Pokemon {
         this.attacks.push( newAttack )
     } 
 
-    attack( attakLearned, competitor ) {
-        //if else
-        //what if the pokemon doesn't have enough magic to launch the attack skill?
+    attack( attackToBeUsed, competitor ) {
+        // reduce ???
+        console.log(`${this.name} launched skill ${this.attacks[attackToBeUsed].skills} successfully`)
+        console.log(`${competitor.name} got ${competitor.health} damage`)
+    }
+
+    healCenter() {
+        this.health += 50
+        this.magic += 50
     }
 
     showStatus( ) {
@@ -27,21 +33,34 @@ class Pokemon {
 
 class AttackSkill {
 
-    constructor( attack, power, magic ) {
+    constructor( skills, power, magic ) {
         
-        this.attack = attack
+        this.skills = skills
         this.power = power
         this.magic = magic
     }
 
 } 
-
+//New Pokemons
 const pikachu = new Pokemon( "pikachu", 120, 80 )
 const bulbassaur = new Pokemon( "bulbassaur", 95, 105 )
+const charmander = new Pokemon( "charmander", 110, 85 )
 
+//New Attacks
 const lightning = new AttackSkill( "lightning", 40, 30 )
+const poisonSeed = new AttackSkill ( "poison seed", 20, 20 )
+const flamethrower = new AttackSkill( "flamethrower", 35, 25)
 
-
+bulbassaur.learnAttackSkill( poisonSeed )
 pikachu.learnAttackSkill( lightning )
+pikachu.learnAttackSkill( poisonSeed )
+charmander.learnAttackSkill( flamethrower )
 
-console.log( pikachu )
+pikachu.attack(1, bulbassaur);
+
+//pikachu.healCenter()
+
+//console.log( pikachu )
+//console.log( bulbassaur )
+
+
