@@ -1,11 +1,12 @@
 `use strict`
 
+
 //
 class Pokemon {
-
+    
     //The constructor takes 3 param: 1st of string and 2 of number
     constructor( name, health, magic ) {
-        
+         
         //Pokemon's name
         this.name = name
         //Pokemon starts the game with X value for health...
@@ -27,13 +28,14 @@ class Pokemon {
     attack( attackToBeUsed, opponent ) {
 
         //condition to print if the opponent is still alive
-        if( opponent.health < 1 ) {
-            
-            //console.log(`\n---- POKEMON ATTACK`)
-            //console.log(`${opponent.name} is killed`)
+                
+        //or if the attacker has still magic to attack! (not sure about this!)
+         if ( this.magic < this.attacks[attackToBeUsed].magic ){
+
             console.log( this.showStatus() )
-        
-        //if it is, 
+
+        //proceed with the attack.
+        //It should subt health from the opponent and magic from the attacker
         } else {
 
             opponent.health -= this.attacks[attackToBeUsed].power;
@@ -42,11 +44,18 @@ class Pokemon {
 
         console.log(`\n---- POKEMON ATTACK`)
         console.log(`${this.name} launched skill "${this.attacks[attackToBeUsed].skill}" successfully!`)
-        console.log(`${opponent.name} got ${this.attacks[attackToBeUsed].power} of his health damage`)}
-       
+        console.log(`${opponent.name} got ${this.attacks[attackToBeUsed].power} of his health damage.  \nHealth left: ${this.magic}`)
+        
+            //if after the attack, hte opponent health is 0, the opponent is killed
+            if( opponent.health < 1 ) {
+                
+                console.log(`\n---- POKEMON ATTACK`)
+                console.log(`Game over for ${opponent.name} `)
+            
+            }}
     }
 
-    //When logged to the console, this method add values to the properties
+    //When logged to the console, this method add values to the magic property
     getMagic() {
         //this.health += 30
         this.magic += 20
@@ -56,6 +65,7 @@ class Pokemon {
 
     showStatus( ) {
         
+        //Each attack requires a different level of magic of each pokemon
         if ( this.name === "pikachu" && this.magic < 30 ||
             this.name === "bulbassaur" && this.magic < 20 ||
             this.name === "charmander" && this.magic < 35) {
@@ -152,8 +162,10 @@ bulbassaur.attack(0, pikachu)
 // bulbassaur launched skill "poison seed" successfully! 
 // pikachu got 20 of his health damage
 
+bulbassaur.attack( 0, pikachu )
 pikachu.attack(0, bulbassaur)
-pikachu.attack(0, bulbassaur)
+
+
 
 
 
