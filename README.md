@@ -13,6 +13,7 @@ Create a new index.js file.
 
 * You should have an AttackSkill constructor function for creating new attacks. 
 * Attacks consumes the pokemon's magic to cause damage to other pokemons. 
+
 * Each individual pokemon has a specific set of attacks. The AttackSkill method should take in three arguments: (1)the name of the attack, (2)the amount of damage the attack does, and (3)the amount of magic the attack requires. For example, here we're creating a 'lightning' attack skill that causes 40 damage, and requires 30 magic: 
 ```javascript
 let lightning = new AttackSkill("lightning", 40, 30);
@@ -32,7 +33,15 @@ pikachu.learnAttackSkill(lightning);
 
 * Your pokemon should have a method called attack which picks one of the pokemon's attack skills to attack another pokemon. This is its most important method! 
 
-Consider all the possiblites in this method. (e.g what if the pokemon doesn't have enough magic to launch the attack skill?). The attack method should call one of the Pokemon's attack and apply it to the other Pokemon. So for example, if you call the 'lightning' attack (which we created above), it should deal 40 damage to the other Pokemon, and deplete 30 magic from the Pokemon that commited the attack. The attack method should additionally console.log out whether the attack was successful (in other words, whether the attacking pokemon had enough magic to actually carry out the attack), and the result of the attack. The attack method should take in two arguments: the index (or key) of the attack to be used, and the Pokemon object that needs to be attacked. For example, here is an attack being called from Pikachu to Bulbasaur: 
+- Consider all the possiblites in this method. (e.g what if the pokemon doesn't have enough magic to launch the attack skill?). 
+
+- The attack method should call one of the Pokemon's attack and apply it to the other Pokemon. 
+
+- So for example, if you call the 'lightning' attack (which we created above), it should deal 40 damage to the other Pokemon, and deplete 30 magic from the Pokemon that commited the attack. 
+
+- The attack method should additionally console.log out whether the attack was successful (in other words, whether the attacking pokemon had enough magic to actually carry out the attack), and the result of the attack. 
+
+- The attack method should take in two arguments: (1)the index (or key) of the attack to be used, and (2)the Pokemon object that needs to be attacked. For example, here is an attack being called from Pikachu to Bulbasaur: 
 ```javascript
 pikachu.attack(0, bulbasaur);
 ```
