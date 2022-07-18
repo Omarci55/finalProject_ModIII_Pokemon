@@ -23,14 +23,26 @@ class Pokemon {
         this.attacks.push( newAttack )
     } 
 
+    //
     attack( attackToBeUsed, opponent ) {
+
+        //condition to print if the opponent is still alive
+        if( opponent.health < 1 ) {
+            
+            //console.log(`\n---- POKEMON ATTACK`)
+            //console.log(`${opponent.name} is killed`)
+            console.log( this.showStatus() )
         
+        //if it is, 
+        } else {
+
             opponent.health -= this.attacks[attackToBeUsed].power;
 
-            console.log(opponent.health)
             this.magic -= this.attacks[attackToBeUsed].magic;
 
-        console.log(`---- POKEMON ATTACK \n${this.name} launched skill ${this.attacks[attackToBeUsed].skill} successfully! \n${opponent.name} got ${this.attacks[attackToBeUsed].power} of his health damage`)
+        console.log(`\n---- POKEMON ATTACK`)
+        console.log(`${this.name} launched skill "${this.attacks[attackToBeUsed].skill}" successfully!`)
+        console.log(`${opponent.name} got ${this.attacks[attackToBeUsed].power} of his health damage`)}
        
     }
 
@@ -38,19 +50,24 @@ class Pokemon {
     getMagic() {
         //this.health += 30
         this.magic += 20
+        console.log(`\n---- Magic gained`) 
+        console.log(`${this.name} got 20 magic back!`)
     }
 
     showStatus( ) {
         
-        if ( this.name === "pikachu" && this.health < 30 ||
-            this.name === "bulbassaur" && this.health < 20 ||
-            this.name === "charmander" && this.health < 25) {
+        if ( this.name === "pikachu" && this.magic < 30 ||
+            this.name === "bulbassaur" && this.magic < 20 ||
+            this.name === "charmander" && this.magic < 35) {
 
-            console.log( `${this.name} has not enough magic, cannot launch attack!` )
+            console.log( `\n---- STATUS`) 
+            console.log(`${this.name} has not enough magic, cannot launch attack!` )
 
         } else {
 
-            console.log( `---- STATUS ${this.name} \nHealth:${this.health} \nMagic: ${this.magic} ` )
+            console.log( `\n---- STATUS ${this.name}`) 
+            console.log(`Health: ${this.health}`)
+            console.log(`Magic: ${this.magic}`)
 
         }
         
@@ -85,30 +102,58 @@ const flamethrower = new AttackSkill( "flamethrower", 35, 25)
 
 
 pikachu.learnAttackSkill( lightning )
-console.log( pikachu )
+//console.log( pikachu )
 
 bulbassaur.learnAttackSkill( poisonSeed )
-console.log( bulbassaur )
+//console.log( bulbassaur )
 
 charmander.learnAttackSkill( flamethrower )
-console.log( charmander )
+//console.log( charmander )
 
 pikachu.attack( 0, bulbassaur )
+//---- POKEMON ATTACK 
+//pikachu launched skill lightning successfully! 
+//bulbassaur got 40 of his health damage
 
-/* pikachu.showStatus()
-pikachu.attack(0, bulbassaur ) 
-pikachu.learnAttackSkill( lightning )
-console.log( bulbassaur.attack(0, pikachu ) )
-pikachu.attack(0, bulbasaur);
-bulbasaur.attack(0, pikachu);
-pikachu.showStatus();
-bulbasaur.showStatus();
-pikachu.attack(0, bulbasaur);
-pikachu.attack(0, bulbasaur);
-pikachu.getMagic();
-pikachu.attack(0, bulbasaur);
-bulbasaur.attack(0, pikachu); */
+bulbassaur.attack(0, pikachu)
+// ---- POKEMON ATTACK 
+// bulbassaur launched skill "poison seed" successfully! 
+// pikachu got 20 of his health damage
 
+pikachu.showStatus()
+// ---- STATUS pikachu 
+// Health:100 
+// Magic: 50 
+
+bulbassaur.showStatus()
+//---- STATUS bulbassaur 
+// Health:55 
+// Magic: 85 
+
+pikachu.attack(0, bulbassaur)
+// ---- POKEMON ATTACK 
+// pikachu launched skill "lightning" successfully! 
+// bulbassaur got 40 of his health damage
+
+pikachu.showStatus()
+// ---- STATUS 
+// pikachu has not enough magic, cannot launch attack!
+
+pikachu.getMagic()
+
+pikachu.showStatus()
+// ---- STATUS 
+// pikachu 
+// Health:100 
+// Magic: 40 
+
+bulbassaur.attack(0, pikachu)
+// ---- POKEMON ATTACK 
+// bulbassaur launched skill "poison seed" successfully! 
+// pikachu got 20 of his health damage
+
+pikachu.attack(0, bulbassaur)
+pikachu.attack(0, bulbassaur)
 
 
 
